@@ -48,7 +48,7 @@ const Hero = () => {
             "border-transparent"
           )}
         >
-          Comenzar ahora
+          Ver catalogo
         </button>
 
         <button
@@ -60,7 +60,7 @@ const Hero = () => {
             "hover:bg-gray-50 dark:hover:bg-black/40"
           )}
         >
-          Conocer más
+          Contacto
         </button>
       </motion.div>
     </div>
