@@ -4,9 +4,10 @@ import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export const FeaturedProducts = () => {
-    const featuredProducts = [
+  const featuredProducts = [
     {
       id: 1,
       name: "Agenda Classic 2024",
@@ -47,9 +48,8 @@ export const FeaturedProducts = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
             className={cn(
-              "text-3xl md:text-4xl font-bold mb-4",
-              "var(--font-league-spartan)",
-              "text-white"
+              "text-3xl md:text-4xl font-bold mb-4 dark:text-white",
+              "var(--font-league-spartan)"
             )}
           >
             Productos Destacados
@@ -59,10 +59,7 @@ export const FeaturedProducts = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className={cn(
-              "text-lg max-w-2xl mx-auto",
-              "text-white/70", "text-black/70"
-            )}
+            className="text-lg max-w-2xl mx-auto text-muted-foreground"
           >
             Descubre nuestra selección de productos más populares
           </motion.p>
@@ -76,11 +73,7 @@ export const FeaturedProducts = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
               viewport={{ once: true }}
-              className={cn(
-                "group relative rounded-2xl overflow-hidden",
-                "border",
-                "border-white/10"
-              )}
+              className="group relative rounded-2xl overflow-hidden border bg-card"
             >
               <div className="aspect-[3/4] relative overflow-hidden">
                 <Image
@@ -90,17 +83,12 @@ export const FeaturedProducts = () => {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-
-              {/* Tags */}
               {product.tags.length > 0 && (
                 <div className="absolute top-3 left-3 flex flex-wrap gap-2">
                   {product.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className={cn(
-                        "px-2 py-1 text-xs font-medium rounded-full",
-                        "bg-white text-black"
-                      )}
+                      className="px-2 py-1 text-xs font-medium rounded-full bg-primary text-primary-foreground"
                     >
                       {tag}
                     </span>
@@ -108,31 +96,15 @@ export const FeaturedProducts = () => {
                 </div>
               )}
 
-              <div className={cn("p-4", "bg-black")}>
-                <h3
-                  className={cn(
-                    "font-bold text-lg mb-1",
-                    "text-white"
-                  )}
-                >
+              <div className="p-4">
+                <h3 className="font-bold text-md mb-1 text-card-foreground">
                   {product.name}
                 </h3>
-                <p
-                  className={cn(
-                    "text-xl font-medium",
-                    "text-white"
-                  )}
-                >
+                <p className="text-xl font-medium text-card-foreground">
                   {product.price}
                 </p>
 
-                <button
-                  className={cn(
-                    "mt-3 w-full py-2 rounded-full text-sm font-medium transition-all",
-                    "border",
-                    "border-white/20 text-white hover:bg-white/10"  
-                  )}
-                >
+                <button className="mt-3 w-full py-2 rounded-full text-sm font-medium transition-all border border-input hover:bg-accent dark:text-white">
                   Ver detalles
                 </button>
               </div>
@@ -141,15 +113,9 @@ export const FeaturedProducts = () => {
         </div>
 
         <div className="mt-10 text-center">
-          <Link
-            href="/productos"
-            className={cn(
-              "inline-flex items-center justify-center px-8 py-3 rounded-full font-medium transition-all",
-              "bg-white text-black hover:bg-white/90"
-            )}
-          >
-            Ver catálogo completo
-          </Link>
+          <Button asChild className="px-8 rounded-full">
+            <Link href="/productos">Ver catálogo completo</Link>
+          </Button>
         </div>
       </div>
     </section>
